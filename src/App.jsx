@@ -50,7 +50,7 @@ const ChatMessage = (props) => {
 
   return (
     <div className={`message ${messageClass}`}>
-      <img src={photoURL} width='50px' />
+      <img src={photoURL} width='50px' alt='Profile' />
       <p>{text}</p>
     </div>
   )
@@ -60,13 +60,13 @@ const ChatRoom = () => {
   const dummy = useRef();
   const messageRef = firestore.collection('messages');
   const query = messageRef.orderBy('createdAt');
-  
-  const [messages] = useCollectionData(query, {idField: 'id'});
+
+  const [messages] = useCollectionData(query, { idField: 'id' });
   const [formValue, setFormValue] = useState('');
 
-  const sendMessage = async(e) => {
+  const sendMessage = async (e) => {
     e.preventDefault();
-    
+
     const { uid, photoURL } = auth.currentUser;
 
     await messageRef.add({
@@ -101,7 +101,7 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <h1>Superchat⚛️🦸🏻‍♂️💬</h1>
+        <h1>SuperChat🦸🏻‍♂️</h1>
         <SignOut />
       </header>
 
